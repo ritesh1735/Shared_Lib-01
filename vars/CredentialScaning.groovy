@@ -1,6 +1,6 @@
 // CredentialScaning.groovy
 
-def generateAndEditGitleaksConfig() {
+def call() {
     sh 'wget https://github.com/zricethezav/gitleaks/releases/download/v7.0.2/gitleaks-linux-amd64 -O gitleaks'
     sh 'chmod +x gitleaks'
     sh 'sudo mv gitleaks /usr/local/bin/'
@@ -16,12 +16,6 @@ def generateAndEditGitleaksConfig() {
         commit = true' > .gitleaks.toml
     '''
     sh 'cat .gitleaks.toml'
-}
-
-def performGitleaksScan() {
-    sh '''pwd
-    ls -la
-    '''
     sh 'gitleaks detect -p . --files-at-commit=latest .'
 }
 
