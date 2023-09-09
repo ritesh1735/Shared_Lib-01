@@ -1,6 +1,6 @@
 // Shared_Lib-01/vars/myStages.groovy
 
-def myGitHubStage() {
+def Cleanworkspace() {
     stage('CleanWorkspace') {
         steps {
             cleanWs()
