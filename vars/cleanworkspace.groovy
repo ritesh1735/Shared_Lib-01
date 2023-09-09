@@ -1,17 +1,5 @@
-// Shared_Lib-01/vars/Cleanworkspace.groovy
-
+// cleanWorkspace.groovy
 def call() {
-    stage('CleanWorkspace') {
-        steps {
-            cleanWs()
-            // Add other steps specific to your 'CleanWorkspace' stage
-        }
-    }
+    cleanWs()
 }
-
-
-// // cleanWorkspace.groovy
-// def call() {
-//     cleanWs()
-// }
 
