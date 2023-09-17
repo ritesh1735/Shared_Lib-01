@@ -1,7 +1,4 @@
 def call() {
-    stage('License Scanning') {
- 
-           
                 def scancodeInstalled = sh(script: 'command -v scancode', returnStatus: true) == 0
                 if (!scancodeInstalled) {
                     sh 'sudo pip install scancode-toolkit'
@@ -10,9 +7,6 @@ def call() {
                 sh 'scancode . --json reportfile.json'
                 sh 'echo $PATH'
                 sh 'which scancode'
-          
-
-    }
 }
 
 
