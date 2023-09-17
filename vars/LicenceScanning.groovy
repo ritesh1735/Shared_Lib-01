@@ -1,19 +1,20 @@
-package org.<your-shared-library-name>
+def call() {
+    stage('License Scanning') {
+        steps {
+            script {
+                def scancodeInstalled = sh(script: 'command -v scancode', returnStatus: true) == 0
+                if (!scancodeInstalled) {
+                    sh 'sudo pip install scancode-toolkit'
+                }
 
-class LicenseScanner {
-    def run() {
-        script {
-            def scancodeInstalled = sh(script: 'command -v scancode', returnStatus: true) == 0
-            if (!scancodeInstalled) {
-                sh 'sudo pip install scancode-toolkit'
+                sh 'scancode . --json reportfile.json'
+                sh 'echo $PATH'
+                sh 'which scancode'
             }
-
-            sh 'scancode . --json reportfile.json'
-            sh 'echo $PATH'
-            sh 'which scancode'
         }
     }
 }
+
 
 // def call() {
 //     def scancodeInstalled = fileExists('$(which scancode)')
